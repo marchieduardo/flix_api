@@ -54,11 +54,11 @@ from genres.serializers import GenreSerializer
 
 #------------------CLASS BASED VIEWS------------------CLASS BASED VIEWS------------------CLASS BASED VIEWS-------------------
 
-class GenreCreateListView(generics.ListCreateAPIView):
+class GenreCreateListView(generics.ListCreateAPIView):    # -----> Quando bate na URL ".../genres/" com um GET, lista todos os gêneros. Quanto é um POST, cria um novo objeto.
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
 
-class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):    # -----> Quando bate na URL ".../genres/id/" com um GET, retorna o gênero em detalhes. Quanto é um PUT, atualiza o objeto. E quando é um DELETE, deleta o objeto.
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
