@@ -4,6 +4,7 @@
 # from django.views.decorators.csrf import csrf_exempt
 # from django.shortcuts import get_object_or_404
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 from genres.models import Genre
 from genres.serializers import GenreSerializer
@@ -55,10 +56,12 @@ from genres.serializers import GenreSerializer
 #------------------CLASS BASED VIEWS------------------CLASS BASED VIEWS------------------CLASS BASED VIEWS-------------------
 
 class GenreCreateListView(generics.ListCreateAPIView):    # -----> Quando bate na URL ".../genres/" com um GET, lista todos os gêneros. Quanto é um POST, cria um novo objeto.
+    permission_classes = (IsAuthenticated,)    # -----> Validação para somente usuários com token conseguirem acessar o endpoint
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
 
 class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):    # -----> Quando bate na URL ".../genres/id/" com um GET, retorna o gênero em detalhes. Quanto é um PUT, atualiza o objeto. E quando é um DELETE, deleta o objeto.
+    permission_classes = (IsAuthenticated,)    # -----> Validação para somente usuários com token conseguirem acessar o endpoint
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
