@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/vi/', include('actors.urls')),
     path('api/v1/', include('movies.urls')),
     path('api/v1/', include('reviews.urls')),
+    path('api/v1/', include('authentication.urls')),
 ]
