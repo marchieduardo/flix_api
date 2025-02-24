@@ -10,13 +10,13 @@ from reviews.models import Review
 
 
 class MovieCreateListView(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,GlobalDefaultPermission,)
+    permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
 
 
 class MovieRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticated,GlobalDefaultPermission,)
+    permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
 
@@ -24,7 +24,6 @@ class MovieRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 class MovieStatsView(views.APIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Movie.objects.all()
-
 
     def get(self, request):
         total_movies = self.queryset.count()
